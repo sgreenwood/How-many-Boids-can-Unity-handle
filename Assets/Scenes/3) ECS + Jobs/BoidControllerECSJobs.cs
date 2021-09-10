@@ -9,7 +9,6 @@ public class BoidControllerECSJobs : MonoBehaviour {
 
     public static BoidControllerECSJobs Instance;
 
-    [SerializeField] private int boidAmount;
     [SerializeField] private Mesh sharedMesh;
     [SerializeField] private Material sharedMaterial;
 
@@ -37,7 +36,7 @@ public class BoidControllerECSJobs : MonoBehaviour {
             typeof(LocalToWorld)
         );
         
-        NativeArray<Entity> boidArray = new NativeArray<Entity>(boidAmount, Allocator.Temp);
+        NativeArray<Entity> boidArray = new NativeArray<Entity>(GameController.numboids, Allocator.Temp);
         entityManager.CreateEntity(boidArchetype, boidArray);
 
         for (int i = 0; i < boidArray.Length; i++) {

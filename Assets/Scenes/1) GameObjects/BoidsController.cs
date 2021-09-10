@@ -4,7 +4,6 @@ using UnityEngine;
 public class BoidsController : MonoBehaviour {
     public static BoidsController Instance;
 
-    [SerializeField] private int boidAmount;
     [SerializeField] private GameObject boidPrefab;
 
     public float boidSpeed;
@@ -25,7 +24,7 @@ public class BoidsController : MonoBehaviour {
         Instance = this;
         boids.Clear();
 
-        for (int i = 0; i < boidAmount; i++) {
+        for (int i = 0; i < GameController.numboids; i++) {
             Vector3 pos = new Vector3(
                 Random.Range(-cageSize / 2f, cageSize / 2f),
                 Random.Range(-cageSize / 2f, cageSize / 2f),
