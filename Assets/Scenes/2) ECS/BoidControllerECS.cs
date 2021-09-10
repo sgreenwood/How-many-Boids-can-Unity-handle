@@ -83,4 +83,14 @@ public class BoidControllerECS : MonoBehaviour {
             )
         );
     }
+
+    private void OnDestroy()
+    {
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+        using (var allEntities = entityManager.GetAllEntities(Allocator.Temp))
+        {
+            entityManager.DestroyEntity(allEntities);
+        }
+    }
 }
